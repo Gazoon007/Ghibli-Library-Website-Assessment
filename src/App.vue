@@ -1,33 +1,44 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
+  <div id="app">
+    <v-app id="inspire">
+      <div>
+        <v-toolbar
+                dark
+                prominent
+                src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+        >
+          <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+          <v-toolbar-title>Vuetify</v-toolbar-title>
+
+          <div class="flex-grow-1"></div>
+
+          <v-btn icon>
+            <v-icon>mdi-export</v-icon>
+          </v-btn>
+        </v-toolbar>
+      </div>
+    </v-app>
+    <v-parallax
+            dark
+            src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+    >
+      <v-row
+              align="center"
+              justify="center"
+      >
+        <h1 class="display-2 font-weight-thin mb-4">Vuetify.js</h1>
+        <h4 class="subheading">Build your application today!</h4>
+      </v-row>
+    </v-parallax>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
   },
   data: () => ({
     //
