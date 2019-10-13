@@ -1,7 +1,7 @@
 <template>
 	<div id="inspire">
 		<app-jumbotron></app-jumbotron>
-		<app-movie-list></app-movie-list>
+		<router-view></router-view>
 	</div>
 </template>
 

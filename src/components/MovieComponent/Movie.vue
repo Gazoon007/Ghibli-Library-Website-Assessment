@@ -9,16 +9,16 @@
 			</v-img>
 			<v-card-title>{{movie.title}}</v-card-title>
 
-			<v-card-text class="text--primary">
+			<v-card-text class="text--primary" style="padding-bottom: 0">
 				<VueReadMoreSmooth :lines="4" :no-shadow="true" :text="'Read Description More'"
 								   :text-less="'Read Description Less'">
 					<p>{{movie.description}}</p>
 				</VueReadMoreSmooth>
 			</v-card-text>
 
-			<v-card-actions>
+			<v-card-actions style="padding: 0 8px 0">
 				<v-row>
-					<v-col align="end">
+					<v-col align="end" style="padding: 0 8px 8px">
 						<v-btn
 								@click="dialog = !dialog"
 								color="rgba(25,25,112, 1)"
@@ -57,10 +57,8 @@
 			dialogFromChild(value) {
 				this.dialog = value;
 			}
-		},
-		created() {
+		}, created() {
 			this.sourceImage = require('../../assets/' + this.index + '.jpg');
-			console.log(this.sourceImage);
 		}
 	}
 </script>

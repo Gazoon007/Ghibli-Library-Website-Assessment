@@ -1,36 +1,31 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
+  <v-app id="app">
+    <app-header></app-header>
+    <div class="container--fluid">
+      <app-home></app-home>
+    </div>
+    <!--<app-footer></app-footer>-->
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+  import Header from "@/components/Header";
+  // import Footer from "@/components/Footer";
+  import Home from "@/components/Home";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
-};
+  export default {
+    // created() {
+    // 	this.$store.dispatch('fetchMovies')
+    // },
+    components: {
+      'appHeader': Header,
+      // 'appFooter': Footer,
+      'appHome': Home
+    }
+  }
 </script>
+<style scoped>
+  #app {
+    background-color: aquamarine;
+  }
+</style>

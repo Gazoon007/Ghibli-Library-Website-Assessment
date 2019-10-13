@@ -19,11 +19,11 @@
 		<v-spacer></v-spacer>
 			<v-toolbar-title style="padding: 2px">
 				<v-tabs slider-size="4" show-arrows background-color="transparent" dark>
-					<v-tab>Films</v-tab>
-					<v-tab>People</v-tab>
-					<v-tab>Locations</v-tab>
-					<v-tab>Species</v-tab>
-					<v-tab>Vehicles</v-tab>
+					<v-tab to="/">Films</v-tab>
+					<v-tab to="/people">People</v-tab>
+					<v-tab to="/locations">Locations</v-tab>
+					<v-tab to="/species">Species</v-tab>
+					<v-tab to="/vehicles">Vehicles</v-tab>
 				</v-tabs>
 			</v-toolbar-title>
 		<template v-slot:img="{ props }">

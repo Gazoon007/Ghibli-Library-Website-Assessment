@@ -6,14 +6,13 @@
 		>
 			<v-card-text>
 				<p class="display-1 text--primary">
-					{{people.name}}
+					{{location.name}}
 				</p>
-				<p>{{people.id}}</p>
+				<p>{{location.id}}</p>
 				<div class="text--primary">
-					<p><b>Age&emsp;&emsp;&emsp;&emsp;: </b>{{people.age}}</p>
-					<p><b>Eye Color&emsp;&ensp;: </b>{{people.eye_color}}</p>
-					<p><b>Gender&emsp;&emsp;&ensp;: </b>{{people.gender}}</p>
-					<p><b>Hair Color&emsp; : </b>{{people.hair_color}}</p>
+					<p><b>Climate&emsp;&emsp;&emsp;&emsp; : </b>{{location.climate}}</p>
+					<p><b>Terrain&emsp;&emsp;&emsp;&emsp;&ensp;: </b>{{location.terrain}}</p>
+					<p><b>Surface Water&emsp; : </b>{{location.surface_water}}</p>
 				</div>
 			</v-card-text>
 		</v-card>
@@ -22,7 +21,7 @@
 
 <script>
 	export default {
-		props: ['people']
+		props: ['location']
 	}
 </script>
 

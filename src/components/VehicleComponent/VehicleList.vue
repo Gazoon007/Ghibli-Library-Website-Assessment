@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<v-row class="myRow" data-aos="zoom-out" justify="center">
-			<h1 id="movie-list" class="display-3 font-weight-thin mb-4">The Movie List</h1>
+			<h1 id="vehicle-list" class="display-3 font-weight-thin mb-4">The Vehicle List</h1>
 		</v-row>
 		<v-row class="myRow" infinite-wrapper>
-			<app-movie :index="$index + 1" :key="$index" :movie="movie" data-aos="zoom-in" data-aos-duration="700"
-					   v-for="(movie, $index) in showMovies"></app-movie>
+			<app-vehicle :index="$index + 1" :key="$index" :vehicle="vehicle" data-aos="zoom-in" data-aos-duration="700"
+						 v-for="(vehicle, $index) in showVehicle"></app-vehicle>
 		</v-row>
 		<div style="overflow: auto">
 			<infinite-loading @infinite="infiniteHandler" force-use-infinite-wrapper="true"></infinite-loading>
@@ -14,26 +14,26 @@
 </template>
 
 <script>
-	import Movie from "@/components/MovieComponent/Movie";
+	import Vehicle from "@/components/VehicleComponent/Vehicle";
 
 	export default {
 		components: {
-			'appMovie': Movie,
+			'appVehicle': Vehicle,
 		},
 		computed: {
-			showMovies() {
+			showVehicle() {
 				return this.$store.getters.getList;
 			}
 		},
 		methods: {
 			infiniteHandler($state) {
 				let payload = {
-					url: '/films',
+					url: '/vehicles',
 					stateHandler: $state
 				};
 				this.$store.dispatch('fetchList', payload);
 			},
-		}, destroyed(){
+		}, destroyed() {
 			this.$store.dispatch('clearList');
 		}
 	}

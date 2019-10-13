@@ -2,7 +2,7 @@
 	<div class="text-center">
 		<v-dialog
 				v-model="dialog"
-				width="300"
+				width="400"
 		>
 			<!--			<template v-slot:activator="{ on }">-->
 			<!--				<v-btn-->
@@ -23,11 +23,11 @@
 				</v-card-title>
 
 				<v-card-text style="margin-top: 20px">
-					<p><b>Title&emsp;: </b>{{movie.title}}</p>
-					<p><b>Director&emsp;: </b>{{movie.director}}</p>
-					<p><b>Producer&emsp;: </b>{{movie.producer}}</p>
-					<p><b>Release Date&emsp;: </b>{{movie.release_date}}</p>
-					<p><b>RT Score&emsp;: </b>{{movie.rt_score}}</p>
+					<p><b>Title&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;: </b>{{movie.title}}</p>
+					<p><b>Director&emsp;&emsp;&emsp;&emsp;: </b>{{movie.director}}</p>
+					<p><b>Producer&emsp;&emsp;&emsp;&ensp;: </b>{{movie.producer}}</p>
+					<p><b>Release Date&ensp;&ensp;&ensp; : </b>{{movie.release_date}}</p>
+					<p><b>RT Score&emsp;&emsp;&emsp;&ensp; : </b>{{movie.rt_score}}</p>
 				</v-card-text>
 
 				<v-divider></v-divider>
@@ -42,7 +42,6 @@
 		props: ['dialog', 'movie'],
 		watch: {
 			dialog() {
-				console.log("SOO" + this.dialog);
 				this.$emit('dialogFromChild', this.dialog);
 			}
 		}
