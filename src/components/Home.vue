@@ -25,6 +25,5 @@
 		margin: 120px 0 0;
 		padding: 0;
 		overflow-x: hidden;
-		background-color: lightblue;
 	}
 </style>

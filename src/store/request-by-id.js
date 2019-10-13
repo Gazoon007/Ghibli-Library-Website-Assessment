@@ -7,6 +7,7 @@ const state = {
 		people: [],
 		vehicles: [],
 	},
+	fetchStatus: false
 };
 
 const mutations = {
@@ -27,6 +28,9 @@ const mutations = {
 			people: [],
 			vehicles: [],
 		};
+	},
+	changeFetchStatus(state, booleanValue) {
+		state.fetchStatus = booleanValue;
 	}
 };
 
@@ -36,16 +40,19 @@ const actions = {
 			let url = payload[i].toString().replace('https://ghibliapi.herokuapp.com', '');
 			axios.get(url).then(res => {
 				commit('storeInformation', {name: res.data.name, url: url})
-			}).catch(error => console.log(error))
+			}).catch(error => console.log(error));
 		}
 	},
 	clearInformation({commit}) {
 		commit('clearInformation');
+	},
+	changeFetchStatus({commit}, booleanValue){
+		commit('changeFetchStatus', booleanValue)
 	}
 };
 
 const getters = {
-	getInformation: (state) => (target) => {
+	getInformation: (state, commit) => (target) => {
 		if (target === 'species') {
 			return state.information.species.join(', ');
 		}
@@ -58,6 +65,9 @@ const getters = {
 		if (target === 'locations') {
 			return state.information.locations.join(', ');
 		}
+	},
+	getFetchStatus: (state) => {
+		return state.fetchStatus;
 	}
 };
 

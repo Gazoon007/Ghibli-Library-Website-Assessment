@@ -1,9 +1,9 @@
 <template>
 	<div class="text-center">
 		<v-dialog
+				max-width="600"
 				v-model="dialog"
 				width="400"
-				max-width="600"
 		>
 
 			<v-card>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+	import {mapActions, mapGetters} from 'vuex';
+
 	export default {
 		name: "MovieDetail",
 		props: ['dialog', 'movie'],
@@ -44,26 +46,39 @@
 			dialog() {
 				this.$emit('dialogFromChild', this.dialog);
 			}
-		}, computed: {
+		}, methods: {
+
+			...mapActions(
+				['fetchInformation', 'clearInformation', 'changeFetchStatus']
+			)
+		},
+		computed: {
+			...mapGetters(
+				['getInformation', 'getFetchStatus']
+			),
 			retrieveSpeciesInformation() {
-				return this.$store.getters.getInformation('species')
+				return this.getInformation('species')
 			},
 			retrievePeopleInformation() {
-				return this.$store.getters.getInformation('people')
+				return this.getInformation('people')
 			},
 			retrieveLocationsInformation() {
-				return this.$store.getters.getInformation('locations')
+				return this.getInformation('locations')
 			},
 			retrieveVehiclesInformation() {
-				return this.$store.getters.getInformation('vehicles')
+				return this.getInformation('vehicles')
+			},
+			retrieveFetchStatus() {
+				return this.getFetchStatus
 			}
 		}, created() {
-			this.$store.dispatch('fetchInformation', this.movie.species);
-			this.$store.dispatch('fetchInformation', this.movie.people);
-			this.$store.dispatch('fetchInformation', this.movie.locations);
-			this.$store.dispatch('fetchInformation', this.movie.vehicles);
+			this.fetchInformation(this.movie.species);
+			this.fetchInformation(this.movie.people);
+			this.fetchInformation(this.movie.locations);
+			this.fetchInformation(this.movie.vehicles);
 		}, destroyed() {
-			this.$store.dispatch('clearInformation')
+			this.clearInformation();
+			this.changeFetchStatus(false);
 		}
 	}
 </script>

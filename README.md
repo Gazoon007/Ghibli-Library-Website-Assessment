@@ -1,4 +1,4 @@
-# vuetify-exercise
+# ghibli-movie-library-assessment
 
 ## Project setup
 ```
