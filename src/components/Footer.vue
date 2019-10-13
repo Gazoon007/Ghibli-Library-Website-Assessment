@@ -1,7 +1,19 @@
 <template>
-	<v-footer app class="myFooter">
-		<span>&copy; 2019</span>
-	</v-footer>
+	<v-card color="rgba(0, 173, 239, 1)" height="150"
+	>
+		<v-footer absolute
+				  class="font-weight-medium"
+				  color="rgba(0, 173, 239, 1)"
+				  dark
+		>
+			<v-col
+					class="text-center"
+					cols="12"
+			>
+				{{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+			</v-col>
+		</v-footer>
+	</v-card>
 </template>
 
 <script>

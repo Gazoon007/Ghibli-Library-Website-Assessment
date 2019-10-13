@@ -21,7 +21,6 @@ const mutations = {
 const actions = {
 	fetchList({commit, state}, payload) {
 		axios.get(payload.url).then(res => {
-			console.log(res.data);
 			if (state.fetchIndex < res.data.length) {
 				for (let i = state.fetchIndex; i < state.fetchIndex + 3; i++) {
 					if (i === res.data.length)

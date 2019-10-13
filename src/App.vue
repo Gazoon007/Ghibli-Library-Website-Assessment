@@ -4,22 +4,19 @@
     <div class="container--fluid">
       <app-home></app-home>
     </div>
-    <!--<app-footer></app-footer>-->
+    <app-footer></app-footer>
   </v-app>
 </template>
 
 <script>
   import Header from "@/components/Header";
-  // import Footer from "@/components/Footer";
+  import Footer from "@/components/Footer";
   import Home from "@/components/Home";
 
   export default {
-    // created() {
-    // 	this.$store.dispatch('fetchMovies')
-    // },
     components: {
       'appHeader': Header,
-      // 'appFooter': Footer,
+      'appFooter': Footer,
       'appHome': Home
     }
   }

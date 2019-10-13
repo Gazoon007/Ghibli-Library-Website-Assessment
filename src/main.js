@@ -6,21 +6,28 @@ import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loade
 import vuetify from './plugins/vuetify'
 import store from './store/main-store'
 import router from './router/main-router'
-
-Vue.config.productionTip = false;
-
 import InfiniteLoading from 'vue-infinite-loading';
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 
-Vue.use(InfiniteLoading, { /* options */ });
+Vue.config.productionTip = false;
+
+Vue.use(InfiniteLoading, { /* options */});
+
+Vue.filter('ifIsNull', function (value) {
+	if (value === '') {
+		return 'No data was given from API'
+	} else {
+		return value
+	}
+});
 
 new Vue({
-  created() {
-    AOS.init();
-  },
-  vuetify,
-  store,
-  router,
-  render: h => h(App)
+	created() {
+		AOS.init();
+	},
+	vuetify,
+	store,
+	router,
+	render: h => h(App)
 }).$mount('#app');

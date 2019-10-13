@@ -1,20 +1,45 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MovieList from "@/components/MovieComponent/MovieList";
-import PeopleList from "@/components/PeopleComponent/PeopleList";
-import LocationList from "@/components/LocationComponent/LocationList";
-import SpeciesList from "@/components/SpeciesComponent/SpeciesList";
-import VehicleList from "@/components/VehicleComponent/VehicleList";
+
+const MovieList = resolve => {
+    require.ensure(['@/components/MovieComponent/MovieList'], () => {
+        resolve(require('@/components/MovieComponent/MovieList'));
+    });
+};
+
+const PeopleList = resolve => {
+    require.ensure(['@/components/PeopleComponent/PeopleList'], () => {
+        resolve(require('@/components/PeopleComponent/PeopleList'));
+    });
+};
+
+const LocationList = resolve => {
+    require.ensure(['@/components/LocationComponent/LocationList'], () => {
+        resolve(require('@/components/LocationComponent/LocationList'));
+    });
+};
+
+const SpeciesList = resolve => {
+    require.ensure(['@/components/SpeciesComponent/SpeciesList'], () => {
+        resolve(require('@/components/SpeciesComponent/SpeciesList'));
+    });
+};
+
+const VehicleList = resolve => {
+    require.ensure(['@/components/VehicleComponent/VehicleList'], () => {
+        resolve(require('@/components/VehicleComponent/VehicleList'));
+    });
+};
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-      {path: '', name: MovieList, component: MovieList},
-      {path: '/people', name: PeopleList, component: PeopleList},
-      {path: '/locations', name: LocationList, component: LocationList},
-      {path: '/species', name: SpeciesList, component: SpeciesList},
-      {path: '/vehicles', name: VehicleList, component: VehicleList},
-  ],
-  mode: 'history'
+    routes: [
+        {path: '', component: MovieList},
+        {path: '/people', component: PeopleList},
+        {path: '/locations', component: LocationList},
+        {path: '/species', component: SpeciesList},
+        {path: '/vehicles', component: VehicleList},
+    ],
+    mode: 'history'
 })

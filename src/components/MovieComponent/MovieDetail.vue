@@ -3,16 +3,8 @@
 		<v-dialog
 				v-model="dialog"
 				width="400"
+				max-width="600"
 		>
-			<!--			<template v-slot:activator="{ on }">-->
-			<!--				<v-btn-->
-			<!--						color="red lighten-2"-->
-			<!--						dark-->
-			<!--						v-on="on"-->
-			<!--				>-->
-			<!--					Click Me-->
-			<!--				</v-btn>-->
-			<!--			</template>-->
 
 			<v-card>
 				<v-card-title
@@ -28,8 +20,11 @@
 					<p><b>Producer&emsp;&emsp;&emsp;&ensp;: </b>{{movie.producer}}</p>
 					<p><b>Release Date&ensp;&ensp;&ensp; : </b>{{movie.release_date}}</p>
 					<p><b>RT Score&emsp;&emsp;&emsp;&ensp; : </b>{{movie.rt_score}}</p>
+					<p><b>Species&emsp;&emsp;&emsp;&emsp; : </b>{{retrieveSpeciesInformation | ifIsNull}}</p>
+					<p><b>People&emsp;&emsp;&emsp;&emsp;&ensp; : </b>{{retrievePeopleInformation | ifIsNull}}</p>
+					<p><b>Locations&emsp;&emsp;&ensp;&ensp;&ensp;: </b>{{retrieveLocationsInformation | ifIsNull}}</p>
+					<p><b>Vehicles&emsp;&emsp;&emsp;&ensp;&ensp;: </b>{{retrieveVehiclesInformation | ifIsNull}}</p>
 				</v-card-text>
-
 				<v-divider></v-divider>
 			</v-card>
 		</v-dialog>
@@ -40,10 +35,35 @@
 	export default {
 		name: "MovieDetail",
 		props: ['dialog', 'movie'],
+		data() {
+			return {
+				species: []
+			}
+		},
 		watch: {
 			dialog() {
 				this.$emit('dialogFromChild', this.dialog);
 			}
+		}, computed: {
+			retrieveSpeciesInformation() {
+				return this.$store.getters.getInformation('species')
+			},
+			retrievePeopleInformation() {
+				return this.$store.getters.getInformation('people')
+			},
+			retrieveLocationsInformation() {
+				return this.$store.getters.getInformation('locations')
+			},
+			retrieveVehiclesInformation() {
+				return this.$store.getters.getInformation('vehicles')
+			}
+		}, created() {
+			this.$store.dispatch('fetchInformation', this.movie.species);
+			this.$store.dispatch('fetchInformation', this.movie.people);
+			this.$store.dispatch('fetchInformation', this.movie.locations);
+			this.$store.dispatch('fetchInformation', this.movie.vehicles);
+		}, destroyed() {
+			this.$store.dispatch('clearInformation')
 		}
 	}
 </script>
