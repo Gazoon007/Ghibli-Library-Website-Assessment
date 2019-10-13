@@ -9,7 +9,16 @@ import router from './router/main-router'
 
 Vue.config.productionTip = false;
 
+import InfiniteLoading from 'vue-infinite-loading';
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+
+Vue.use(InfiniteLoading, { /* options */ });
+
 new Vue({
+  created() {
+    AOS.init();
+  },
   vuetify,
   store,
   router,
