@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div id="people-list">
 		<v-row class="myRow" data-aos="zoom-out" justify="center">
-			<h1 id="people-list" class="display-3 font-weight-thin mb-4">The People List</h1>
+			<h1 class="display-3 font-weight-thin mb-4">The People List</h1>
 		</v-row>
 		<v-row class="myRow" infinite-wrapper>
 			<app-people :index="$index + 1" :key="$index" :people="people" data-aos="zoom-in" data-aos-duration="700"
@@ -33,8 +33,10 @@
 				};
 				this.$store.dispatch('fetchList', payload);
 			},
-		}, destroyed() {
-			this.$store.dispatch('clearList');
+		}, destroyed(){
+			setTimeout(()=> {
+				this.$store.dispatch('clearList');
+			}, 500);
 		}
 	}
 </script>

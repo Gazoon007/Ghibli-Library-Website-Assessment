@@ -1,5 +1,5 @@
 <template>
-	<v-card height="150" class="myFooter"
+	<v-card class="myFooter" height="150"
 	>
 		<v-footer absolute
 				  class="font-weight-medium"
@@ -7,9 +7,15 @@
 				  dark
 		>
 			<v-row align="center" justify="center">
-				<v-img
-						max-width="500px"
-						src="../assets/Studio_Ghibli_portal_logo.png"
+				<v-img max-width="500px"
+					   src="../assets/Studio_Ghibli_portal_logo.png"
+					   v-if="!isMobile"
+					   contain
+				></v-img>
+				<v-img max-width="250px" style="padding-top: 50px"
+					   contain
+					   src="../assets/Studio_Ghibli_portal_logo.png"
+					   v-else
 				></v-img>
 			</v-row>
 
@@ -27,7 +33,12 @@
 
 <script>
 	export default {
-		name: "Footer"
+		name: "Footer",
+		computed: {
+			isMobile() {
+				return this.$store.getters.getWidthScreen
+			}
+		}
 	}
 </script>
 

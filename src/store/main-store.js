@@ -10,7 +10,11 @@ export default new Vuex.Store({
 	state: {},
 	mutations: {},
 	actions: {},
-	getters: {},
+	getters: {
+		getWidthScreen() {
+			return screen.width <= 760;
+		}
+	},
 	modules: {
 		request,
 		requestById

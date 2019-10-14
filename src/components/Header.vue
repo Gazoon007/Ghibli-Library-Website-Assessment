@@ -38,11 +38,11 @@
 			</template>
 
 			<v-list color="blue lighten-2" dark>
-				<v-list-item to="/">Films</v-list-item>
-				<v-list-item to="/people">People</v-list-item>
-				<v-list-item to="/locations">Locations</v-list-item>
-				<v-list-item to="/species">Species</v-list-item>
-				<v-list-item to="/vehicles">Vehicles</v-list-item>
+				<v-list-item :to="{name: 'home', hash:'#movie-list'}">Films</v-list-item>
+				<v-list-item :to="{name: 'people', hash:'#people-list'}">People</v-list-item>
+				<v-list-item :to="{name: 'locations', hash:'#location-list'}">Locations</v-list-item>
+				<v-list-item :to="{name: 'species', hash:'#species-list'}">Species</v-list-item>
+				<v-list-item :to="{name: 'vehicles', hash:'#vehicle-list'}">Vehicles</v-list-item>
 			</v-list>
 		</v-menu>
 		<template v-slot:img="{ props }">
@@ -72,7 +72,7 @@
 			)
 		}, computed: {
 			isMobile() {
-				return screen.width <= 760;
+				return this.$store.getters.getWidthScreen
 			}
 		}
 	}

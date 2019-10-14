@@ -35,11 +35,24 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        {path: '', component: MovieList},
-        {path: '/people', component: PeopleList},
-        {path: '/locations', component: LocationList},
-        {path: '/species', component: SpeciesList},
-        {path: '/vehicles', component: VehicleList},
+        {path: '', name:'home', component: MovieList},
+        {path: '/people', name:'people', component: PeopleList},
+        {path: '/locations', name:'locations', component: LocationList},
+        {path: '/species', name:'species', component: SpeciesList},
+        {path: '/vehicles', name:'vehicles', component: VehicleList},
     ],
+    scrollBehavior(to) {
+        if (to.hash) {
+            const element = document.querySelector(to.hash);
+            if (element) {
+                window.scrollTo({
+                    top: element.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    },
     mode: 'history'
 })
